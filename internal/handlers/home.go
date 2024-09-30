@@ -16,7 +16,8 @@ type FileData struct {
 // HomeHandler serves the home page by rendering the template with dynamic data
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	// Parse the HTML template from the web/templates directory
-	tmpl, err := template.ParseFiles("web/templates/home.html")
+	// tmpl, err := template.ParseFiles("web/templates/home.html")
+	tmpl, err := template.ParseFiles("web/templates/maha-cv/maha-cv-resume-bootstrap.vercel.app/home-one.html")
 	if err != nil {
 		http.Error(w, "Could not load template", http.StatusInternalServerError)
 		log.Printf("template parsing error: %v", err)

@@ -18,6 +18,9 @@ func main() {
 	// Create a Gin router
 	router := gin.Default()
 
+	// Set trusted proxies (example: trust only localhost)
+	router.SetTrustedProxies([]string{"127.0.0.1"})
+
 	// Set up HTTP handlers
 	router.GET("/", func(c *gin.Context) {
 		handlers.HomeHandler(c.Writer, c.Request)
