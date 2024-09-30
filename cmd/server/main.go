@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	// Load configuration
+	// Load configuration from config.json
 	cfg, err := config.LoadConfig("config.json")
 	if err != nil {
 		log.Fatalf("could not load config: %v", err)
@@ -17,7 +17,7 @@ func main() {
 	// Set up HTTP handlers
 	http.HandleFunc("/", handlers.HomeHandler)
 
-	// Start the server
+	// Start the server using the loaded port from config
 	log.Printf("Starting server on :%s", cfg.Port)
 	if err := http.ListenAndServe("0.0.0.0:"+cfg.Port, nil); err != nil {
 		log.Fatalf("server failed: %v", err)
