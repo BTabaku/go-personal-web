@@ -4,7 +4,8 @@ import (
 	"go-personal-web/internal/config"
 	"go-personal-web/internal/handlers"
 	"log"
-	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -14,12 +15,17 @@ func main() {
 		log.Fatalf("could not load config: %v", err)
 	}
 
+	// Create a Gin router
+	router := gin.Default()
+
 	// Set up HTTP handlers
-	http.HandleFunc("/", handlers.HomeHandler)
+	router.GET("/", func(c *gin.Context) {
+		handlers.HomeHandler(c.Writer, c.Request)
+	})
 
 	// Start the server using the loaded port from config
 	log.Printf("Starting server on :%s", cfg.Port)
-	if err := http.ListenAndServe("0.0.0.0:"+cfg.Port, nil); err != nil {
+	if err := router.Run(":" + cfg.Port); err != nil {
 		log.Fatalf("server failed: %v", err)
 	}
 }

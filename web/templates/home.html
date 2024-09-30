@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>{{.Title}}</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-<h1>Welcome to My Personal Website</h1>
-<p>This is where I showcase my projects and skills.</p>
-HALLOOOOOOOOO
+    <h1>{{.Message}}</h1>
+
+    <p>Here is a list of files:</p>
+    <ul>
+        {{range .Files}}
+        <li>{{.}}</li>
+        {{else}}
+        <li>No files available.</li>
+        {{end}}
+    </ul>
+
+    {{if eq (len .Files) 3}}
+    <p>You have exactly 3 files!</p>
+    {{else}}
+    <p>The number of files is not 3.</p>
+    {{end}}
+
 </body>
 </html>
