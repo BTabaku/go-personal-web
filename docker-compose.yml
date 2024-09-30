@@ -1,10 +1,12 @@
 version: '3.8'
 
 services:
-  op-go-personal-web:
+  web:
     build: .
     ports:
       - "8087:8087"
+    volumes:
+      - ./web:/app/web  # Mount only the web folder
     environment:
       - PORT=8087
     command: ["/app/main"]
