@@ -18,8 +18,9 @@ func main() {
 	// Create a Gin router
 	router := gin.Default()
 
-	// Set trusted proxies (example: trust only localhost)
-	router.SetTrustedProxies([]string{"127.0.0.1"})
+	// Serve static files
+	router.Static("/assets", "./web/templates/maha-cv/assets")
+	router.Static("/demo", "./web/templates/maha-cv/demo")
 
 	// Set up HTTP handlers
 	router.GET("/", func(c *gin.Context) {
