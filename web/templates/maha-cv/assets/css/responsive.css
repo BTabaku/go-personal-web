@@ -574,3 +574,21 @@
   }
 }
 /*# sourceMappingURL=responsive.css.map */
+
+<style>
+  .responsive-image {
+    width: 50%;
+  }
+
+  @media (min-width: 768px) {
+    .responsive-image {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .responsive-image {
+      width: 30%;
+    }
+  }
+</style>
